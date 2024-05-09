@@ -1,4 +1,7 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { StateContext } from "../App";
+
+export default function Header() {
     const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
@@ -11,6 +14,7 @@ export default function Header({ user, theme, setTheme }) {
       console.log("CLICK!");
     }
 
+    const {theme, setTheme, user} = useContext(StateContext)
     return (
         <header className={theme}>
             <div>
