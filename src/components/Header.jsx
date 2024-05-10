@@ -15,7 +15,8 @@ export default function Header() {
     }
 
     const handleButtonClick = () => {
-        localStorage.clear()
+        localStorage.removeItem('theme')
+        setTheme("light")
     }
 
     const { user } = useContext(StateContext)
