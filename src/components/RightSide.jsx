@@ -1,9 +1,9 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
-import { StateContext } from '../App'
+import { ThemeContext} from "../App"
 import { useContext } from 'react'
 export default function RightSide() {
-    const { theme } = useContext(StateContext)
+    const { theme } = useContext(ThemeContext)
     
     return (
         <aside>

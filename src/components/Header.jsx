@@ -1,29 +1,43 @@
-import { useContext } from "react";
-import { StateContext } from "../App";
+import { useContext } from "react"
+import { StateContext, ThemeContext } from "../App"
 
 export default function Header() {
+    const { theme, setTheme } = useContext(ThemeContext)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        if (theme === "dark") {
+            localStorage.setItem("theme", "light")
+            setTheme("light")
+        } else {
+            localStorage.setItem("theme", "dark")
+            setTheme("dark")
+        }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.clear()
     }
 
-    const {theme, setTheme, user} = useContext(StateContext)
+    const { user } = useContext(StateContext)
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input
+                        id="darkMode"
+                        type="checkbox"
+                        checked={theme === "dark"}
+                        onChange={handleCheckChange}
+                    ></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
-                    <button className="clear-settings-btn" onClick={handleButtonClick}>Clear Locally Saved Settings</button>
+                    <button
+                        className="clear-settings-btn"
+                        onClick={handleButtonClick}
+                    >
+                        Clear Locally Saved Settings
+                    </button>
                 </div>
             </div>
             <div className="logo">
@@ -95,8 +109,14 @@ export default function Header() {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div
+                className={
+                    theme === "dark" ? "profile-card dark" : "profile-card"
+                }
+            >
+                <div className="profile-icon">
+                    <img src={user.profileImage} />
+                </div>
 
                 <div className="profile-details">
                     <h4>{user.name}</h4>
